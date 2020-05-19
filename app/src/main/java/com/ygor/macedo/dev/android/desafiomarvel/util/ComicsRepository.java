@@ -4,13 +4,13 @@ import com.ygor.macedo.dev.android.desafiomarvel.data.model.ComicsResponse;
 
 import io.reactivex.Single;
 
-import static com.ygor.macedo.dev.android.desafiomarvel.data.service.Retrofit.getApiService;
-import static com.ygor.macedo.dev.android.desafiomarvel.util.AppUtils.md5;
+import static com.ygor.macedo.dev.android.desafiomarvel.data.service.RetrofitService.getApiService;
+import static com.ygor.macedo.dev.android.desafiomarvel.util.md5.md5;
 
 public class ComicsRepository {
 
-    public static final String PUBLIC_KEY = "e4332566bcaa38e6c29c436f28e0e9c5";
-    public static final String PRIVATE_KEY = "b1d3109cbf154fc35fe60b87a7fa698e72a9e553";
+    public static final String PUBLIC_KEY = "6eb7e8896ec5850c52515a8a23ee97f0";
+    public static final String PRIVATE_KEY = "0dd0c16fedb8a02985977eafca66b49f5e6a526f";
 
     public Single<ComicsResponse> getComics() {
         String ts = Long.toString(System.currentTimeMillis() / 1000);

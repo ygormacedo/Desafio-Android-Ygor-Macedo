@@ -63,14 +63,14 @@ public class HqDetailActivity extends AppCompatActivity {
         textViewPages.setText(result.getPageCount().toString());
 
         Picasso.get().load(result.getThumbnail().getPath() + "/portrait_incredible." + result.getThumbnail().getExtension())
-                .placeholder(R.drawable.logo_marvel)
-                .error(R.drawable.logo_marvel)
+                .placeholder(R.drawable.marvel_logo)
+                .error(R.drawable.marvel_logo)
                 .into(imageHero);
 
         if (!result.getImages().isEmpty()) {
             Picasso.get().load(result.getImages().get(0).getPath() + "/landscape_incredible." + result.getImages().get(0).getExtension())
-                    .placeholder(R.drawable.logo_marvel)
-                    .error(R.drawable.logo_marvel)
+                    .placeholder(R.drawable.marvel_logo)
+                    .error(R.drawable.marvel_logo)
                     .into(imageBackground);
         }
 

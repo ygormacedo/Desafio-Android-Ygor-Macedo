@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">DesafioMarvel</string>
-    <string name="todo">TODO</string>
+    <string name="app_name">HqMarvelChallengeApp</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -17,5 +16,4 @@
     </string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="amazing_spider_man_2014_1_n_mhan_variant">AMAZING SPIDER-MAN (2014) #1 \n(MHAN VARIANT)</string>
 </resources>

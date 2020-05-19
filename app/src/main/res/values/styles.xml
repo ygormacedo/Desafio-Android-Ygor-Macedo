@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@color/appBackground</item>
+        <item name="android:textColor">@color/textColor</item>
     </style>
 
     <style name="ToolbarTheme" parent="AppTheme">
@@ -17,6 +19,8 @@
     </style>
 
     <style name="HqTheme" parent="AppTheme">
+        <item name="android:background">@color/hqBackgroud</item>
+        <item name="android:padding">@dimen/white_hq_border</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -33,8 +33,8 @@ public class ImagePopupActivity extends AppCompatActivity {
 
         // Carregamos a imagem
         Picasso.get().load(image)
-                .placeholder(R.drawable.logo_marvel)
-                .error(R.drawable.logo_marvel)
+                .placeholder(R.drawable.marvel_logo)
+                .error(R.drawable.marvel_logo)
                 .into(imageComic);
 
         // Adidionamos o evento de click para fechar-mos a tela

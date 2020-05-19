@@ -82,8 +82,8 @@ public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerView
 
         private void bind(Result result) {
             Picasso.get().load(result.getThumbnail().getPath() + "/portrait_incredible." + result.getThumbnail().getExtension())
-                    .placeholder(R.drawable.logo_marvel)
-                    .error(R.drawable.logo_marvel)
+                    .placeholder(R.drawable.marvel_logo)
+                    .error(R.drawable.marvel_logo)
                     .into(imageViewHq);
 
             textViewHqNumber.setText("# " + result.getIssueNumber());

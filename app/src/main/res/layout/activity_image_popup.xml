@@ -25,8 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewClose"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/splash"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/splash" />
 
     <ImageView
         android:id="@+id/imageViewClose"
@@ -37,12 +36,12 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:src="@drawable/ic_close"
         android:textColor="#ffffff"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
