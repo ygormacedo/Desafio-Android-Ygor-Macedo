@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.HqDetailActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MarvelDetailActivity" />
+        <activity android:name=".view.MarvelMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.ygor.macedo.dev.android.desafiomarvel.R;
-import com.ygor.macedo.dev.android.desafiomarvel.data.model.Result;
-import com.ygor.macedo.dev.android.desafiomarvel.view.HqDetailActivity;
+import com.ygor.macedo.dev.android.desafiomarvel.data.model.MarvelResults;
+import com.ygor.macedo.dev.android.desafiomarvel.view.MarvelDetailActivity;
 
 import java.util.List;
 
@@ -21,12 +21,12 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerViewComicsAdapter.ViewHolder> {
+public class MarvelRecyclerViewAdapter extends RecyclerView.Adapter<MarvelRecyclerViewAdapter.ViewHolder> {
 
-    private List<Result> results;
+    private List<MarvelResults> marvelResults;
 
-    public RecyclerViewComicsAdapter(List<Result> results) {
-        this.results = results;
+    public MarvelRecyclerViewAdapter(List<MarvelResults> marvelResults) {
+        this.marvelResults = marvelResults;
     }
 
     @Override
@@ -44,14 +44,14 @@ public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerView
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Result result = results.get(position);
-        viewHolder.bind(result);
+        MarvelResults marvelResults = this.marvelResults.get(position);
+        viewHolder.bind(marvelResults);
 
         viewHolder.itemView.setOnClickListener(v -> {
 
             String transitionName = "image_" + position;
-            Intent intent = new Intent(viewHolder.itemView.getContext(), HqDetailActivity.class);
-            intent.putExtra("comic", result);
+            Intent intent = new Intent(viewHolder.itemView.getContext(), MarvelDetailActivity.class);
+            intent.putExtra("comic", marvelResults);
             intent.putExtra("transitionName", transitionName);
 
             viewHolder.imageViewHq.setTransitionName(transitionName);
@@ -66,7 +66,7 @@ public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public int getItemCount() {
-        return results.size();
+        return marvelResults.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -80,18 +80,18 @@ public class RecyclerViewComicsAdapter extends RecyclerView.Adapter<RecyclerView
             textViewHqNumber = itemView.findViewById(R.id.textViewHqNumber);
         }
 
-        private void bind(Result result) {
-            Picasso.get().load(result.getThumbnail().getPath() + "/portrait_incredible." + result.getThumbnail().getExtension())
+        private void bind(MarvelResults marvelResults) {
+            Picasso.get().load(marvelResults.getMarvelThumbnail().getPath() + "/portrait_incredible." + marvelResults.getMarvelThumbnail().getExtension())
                     .placeholder(R.drawable.marvel_logo)
                     .error(R.drawable.marvel_logo)
                     .into(imageViewHq);
 
-            textViewHqNumber.setText("# " + result.getIssueNumber());
+            textViewHqNumber.setText("# " + marvelResults.getIssueNumber());
         }
     }
 
-    public void update(List<Result> resultList) {
-        this.results = resultList;
+    public void update(List<MarvelResults> marvelResultsList) {
+        this.marvelResults = marvelResultsList;
         notifyDataSetChanged();
     }
 }

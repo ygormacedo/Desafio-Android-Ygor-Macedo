@@ -2,7 +2,7 @@ package com.ygor.macedo.dev.android.desafiomarvel.data.model;
 
 import com.google.gson.annotations.Expose;
 
-public class ComicsResponse {
+public class MarvelResponse {
 
     @Expose
     private String attributionHTML;
@@ -13,7 +13,7 @@ public class ComicsResponse {
     @Expose
     private String copyright;
     @Expose
-    private Data data;
+    private MarvelData marvelData;
     @Expose
     private String etag;
     @Expose
@@ -51,12 +51,12 @@ public class ComicsResponse {
         this.copyright = copyright;
     }
 
-    public Data getData() {
-        return data;
+    public MarvelData getMarvelData() {
+        return marvelData;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setMarvelData(MarvelData marvelData) {
+        this.marvelData = marvelData;
     }
 
     public String getEtag() {

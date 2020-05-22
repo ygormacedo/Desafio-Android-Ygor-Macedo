@@ -5,31 +5,31 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Thumbnail implements Parcelable {
+public class MarvelThumbnail implements Parcelable {
 
     @Expose
     private String extension;
     @Expose
     private String path;
 
-    private Thumbnail(Parcel in) {
+    private MarvelThumbnail(Parcel in) {
         extension = in.readString();
         path = in.readString();
     }
 
-    protected static final Creator<Thumbnail> CREATOR = new Creator<Thumbnail>() {
+    protected static final Creator<MarvelThumbnail> CREATOR = new Creator<MarvelThumbnail>() {
         @Override
-        public Thumbnail createFromParcel(Parcel in) {
-            return new Thumbnail(in);
+        public MarvelThumbnail createFromParcel(Parcel in) {
+            return new MarvelThumbnail(in);
         }
 
         @Override
-        public Thumbnail[] newArray(int size) {
-            return new Thumbnail[size];
+        public MarvelThumbnail[] newArray(int size) {
+            return new MarvelThumbnail[size];
         }
     };
 
-    public Thumbnail(String extension, String path) {
+    public MarvelThumbnail(String extension, String path) {
         this.extension = extension;
         this.path = path;
     }

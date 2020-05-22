@@ -7,25 +7,25 @@ import com.google.gson.annotations.Expose;
 
 import java.util.List;
 
-public class Characters implements Parcelable {
+public class MarvelCharacters implements Parcelable {
 
     @Expose
     private Long available;
     @Expose
     private String colletionURI;
     @Expose
-    private List<Item> items;
+    private List<MarvelItem> marvelItems;
     @Expose
     private Long returned;
 
-    protected Characters(Parcel in) {
+    protected MarvelCharacters(Parcel in) {
         if (in.readByte() == 0) {
             available = null;
         } else {
             available = in.readLong();
         }
         colletionURI = in.readString();
-        items = in.createTypedArrayList(Item.CREATOR);
+        marvelItems = in.createTypedArrayList(MarvelItem.CREATOR);
         if (in.readByte() == 0) {
             returned = null;
         } else {
@@ -33,15 +33,15 @@ public class Characters implements Parcelable {
         }
     }
 
-    public static final Creator<Characters> CREATOR = new Creator<Characters>() {
+    public static final Creator<MarvelCharacters> CREATOR = new Creator<MarvelCharacters>() {
         @Override
-        public Characters createFromParcel(Parcel in) {
-            return new Characters(in);
+        public MarvelCharacters createFromParcel(Parcel in) {
+            return new MarvelCharacters(in);
         }
 
         @Override
-        public Characters[] newArray(int size) {
-            return new Characters[size];
+        public MarvelCharacters[] newArray(int size) {
+            return new MarvelCharacters[size];
         }
     };
 
@@ -61,12 +61,12 @@ public class Characters implements Parcelable {
         this.colletionURI = colletionURI;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<MarvelItem> getMarvelItems() {
+        return marvelItems;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setMarvelItems(List<MarvelItem> marvelItems) {
+        this.marvelItems = marvelItems;
     }
 
     public Long getReturned() {

@@ -5,27 +5,33 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Series implements Parcelable {
+public class MarvelItem implements Parcelable {
 
     @Expose
     private String name;
     @Expose
     private String resourceURI;
+    @Expose
+    private String role;
+    @Expose
+    private String type;
 
-    protected Series(Parcel in) {
+    protected MarvelItem(Parcel in) {
         name = in.readString();
         resourceURI = in.readString();
+        role = in.readString();
+        type = in.readString();
     }
 
-    private static final Creator<Series> CREATOR = new Creator<Series>() {
+    public static final Creator<MarvelItem> CREATOR = new Creator<MarvelItem>() {
         @Override
-        public Series createFromParcel(Parcel in) {
-            return new Series(in);
+        public MarvelItem createFromParcel(Parcel in) {
+            return new MarvelItem(in);
         }
 
         @Override
-        public Series[] newArray(int size) {
-            return new Series[size];
+        public MarvelItem[] newArray(int size) {
+            return new MarvelItem[size];
         }
     };
 
@@ -45,6 +51,22 @@ public class Series implements Parcelable {
         this.resourceURI = resourceURI;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -52,8 +74,10 @@ public class Series implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(resourceURI);
         dest.writeString(name);
+        dest.writeString(resourceURI);
+        dest.writeString(role);
+        dest.writeString(type);
 
     }
 }

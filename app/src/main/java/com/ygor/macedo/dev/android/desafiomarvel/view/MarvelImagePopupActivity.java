@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 @SuppressLint("Registered")
-public class ImagePopupActivity extends AppCompatActivity {
+public class MarvelImagePopupActivity extends AppCompatActivity {
 
     private ImageView imageComic;
     private ImageView imageClose;

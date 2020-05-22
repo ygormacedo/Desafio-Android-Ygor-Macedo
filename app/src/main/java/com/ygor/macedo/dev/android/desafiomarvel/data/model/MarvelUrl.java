@@ -5,27 +5,27 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Url implements Parcelable {
+public class MarvelUrl implements Parcelable {
 
     @Expose
     private String type;
     @Expose
     private String url;
 
-    private Url(Parcel in) {
+    private MarvelUrl(Parcel in) {
         type = in.readString();
         url = in.readString();
     }
 
-    protected static final Creator<Url> CREATOR = new Creator<Url>() {
+    protected static final Creator<MarvelUrl> CREATOR = new Creator<MarvelUrl>() {
         @Override
-        public Url createFromParcel(Parcel in) {
-            return new Url(in);
+        public MarvelUrl createFromParcel(Parcel in) {
+            return new MarvelUrl(in);
         }
 
         @Override
-        public Url[] newArray(int size) {
-            return new Url[size];
+        public MarvelUrl[] newArray(int size) {
+            return new MarvelUrl[size];
         }
     };
 

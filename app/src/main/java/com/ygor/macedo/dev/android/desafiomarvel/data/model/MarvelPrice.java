@@ -5,14 +5,14 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Price implements Parcelable {
+public class MarvelPrice implements Parcelable {
 
     @Expose
     private Double price;
     @Expose
     private String type;
 
-    private Price(Parcel in) {
+    private MarvelPrice(Parcel in) {
         if (in.readByte() == 0) {
             price = null;
         } else {
@@ -21,15 +21,15 @@ public class Price implements Parcelable {
         type = in.readString();
     }
 
-    protected final static Creator<Price> CREATOR = new Creator<Price>() {
+    protected final static Creator<MarvelPrice> CREATOR = new Creator<MarvelPrice>() {
         @Override
-        public Price createFromParcel(Parcel in) {
-            return new Price(in);
+        public MarvelPrice createFromParcel(Parcel in) {
+            return new MarvelPrice(in);
         }
 
         @Override
-        public Price[] newArray(int size) {
-            return new Price[size];
+        public MarvelPrice[] newArray(int size) {
+            return new MarvelPrice[size];
         }
     };
 

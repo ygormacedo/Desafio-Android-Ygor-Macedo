@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 import androidx.annotation.RequiresApi;
 
-public class md5 {
+public class MarvelMd5HashEncription {
 
     public static final String md5(final String s) {
         final String MD5 = "MD5";

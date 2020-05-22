@@ -3,76 +3,75 @@ package com.ygor.macedo.dev.android.desafiomarvel.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Result implements Parcelable {
+public class MarvelResults implements Parcelable {
 
-    @Expose
-    private Characters characters;
-    @Expose
+    @SerializedName("characters")
+    private MarvelCharacters marvelCharacters;
+    @SerializedName("collected_issues")
     private List<Object> collectedIssues;
-    @Expose
+    @SerializedName("collections")
     private List<Object> collections;
-    @Expose
-    private Creators creators;
-    @Expose
-    private List<Date> dates;
-    @Expose
+    @SerializedName("creators")
+    private MarvelCreators marvelCreators;
+    @SerializedName("dates")
+    private List<MarvelDate> marvelDates;
+    @SerializedName("description")
     private String description;
-    @Expose
+    @SerializedName("diamond_code")
     private String diamondCode;
-    @Expose
+    @SerializedName("digital_id")
     private Long digitalId;
-    @Expose
+    @SerializedName("ean")
     private String ean;
-    @Expose
-    private Events events;
-    @Expose
+    @SerializedName("events")
+    private MarvelEvents marvelEvents;
+    @SerializedName("format")
     private String format;
-    @Expose
+    @SerializedName("id")
     private Long id;
-    @Expose
-    private List<Image> images;
-    @Expose
+    @SerializedName("images")
+    private List<MarvelImage> marvelImages;
+    @SerializedName("isbn")
     private String isbn;
-    @Expose
+    @SerializedName("issn")
     private String issn;
-    @Expose
+    @SerializedName("issue_number")
     private Long issueNumber;
-    @Expose
+    @SerializedName("modified")
     private String modified;
-    @Expose
+    @SerializedName("page_count")
     private Long pageCount;
-    @Expose
-    private List<Price> prices;
-    @Expose
+    @SerializedName("prices")
+    private List<MarvelPrice> marvelPrices;
+    @SerializedName("resorce_uri")
     private String resourceURI;
-    @Expose
-    private Series series;
-    @Expose
-    private Stories stories;
-    @Expose
-    private List<TextObject> textObjects;
-    @Expose
-    private Thumbnail thumbnail;
-    @Expose
+    @SerializedName("series")
+    private MarvelSeries marvelSeries;
+    @SerializedName("stories")
+    private MarvelStories marvelStories;
+    @SerializedName("text_objects")
+    private List<MarvelTextObject> marvelTextObjects;
+    @SerializedName("thumbnail")
+    private MarvelThumbnail marvelThumbnail;
+    @SerializedName("title")
     private String title;
-    @Expose
+    @SerializedName("upc")
     private String upc;
-    @Expose
-    private List<Url> urls;
-    @Expose
+    @SerializedName("urls")
+    private List<MarvelUrl> marvelUrls;
+    @SerializedName("variant_description")
     private String variantDescription;
-    @Expose
+    @SerializedName("variants")
     private List<Object> variants;
 
-    protected Result(Parcel in) {
-        characters = in.readParcelable(Characters.class.getClassLoader());
-        creators = in.readParcelable(Creators.class.getClassLoader());
-        dates = in.createTypedArrayList(Date.CREATOR);
+    protected MarvelResults(Parcel in) {
+        marvelCharacters = in.readParcelable(MarvelCharacters.class.getClassLoader());
+        marvelCreators = in.readParcelable(MarvelCreators.class.getClassLoader());
+        marvelDates = in.createTypedArrayList(MarvelDate.CREATOR);
         description = in.readString();
         diamondCode = in.readString();
         if (in.readByte() == 0) {
@@ -81,14 +80,14 @@ public class Result implements Parcelable {
             digitalId = in.readLong();
         }
         ean = in.readString();
-        events = in.readParcelable(Events.class.getClassLoader());
+        marvelEvents = in.readParcelable(MarvelEvents.class.getClassLoader());
         format = in.readString();
         if (in.readByte() == 0) {
             id = null;
         } else {
             id = in.readLong();
         }
-        images = in.createTypedArrayList(Image.CREATOR);
+        marvelImages = in.createTypedArrayList(MarvelImage.CREATOR);
         isbn = in.readString();
         issn = in.readString();
         if (in.readByte() == 0) {
@@ -102,36 +101,36 @@ public class Result implements Parcelable {
         } else {
             pageCount = in.readLong();
         }
-        prices = in.createTypedArrayList(Price.CREATOR);
+        marvelPrices = in.createTypedArrayList(MarvelPrice.CREATOR);
         resourceURI = in.readString();
-        series = in.readParcelable(Series.class.getClassLoader());
-        stories = in.readParcelable(Stories.class.getClassLoader());
-        textObjects = in.createTypedArrayList(TextObject.CREATOR);
-        thumbnail = in.readParcelable(Thumbnail.class.getClassLoader());
+        marvelSeries = in.readParcelable(MarvelSeries.class.getClassLoader());
+        marvelStories = in.readParcelable(MarvelStories.class.getClassLoader());
+        marvelTextObjects = in.createTypedArrayList(MarvelTextObject.CREATOR);
+        marvelThumbnail = in.readParcelable(MarvelThumbnail.class.getClassLoader());
         title = in.readString();
         upc = in.readString();
-        urls = in.createTypedArrayList(Url.CREATOR);
+        marvelUrls = in.createTypedArrayList(MarvelUrl.CREATOR);
         variantDescription = in.readString();
     }
 
-    public static final Creator<Result> CREATOR = new Creator<Result>() {
+    public static final Creator<MarvelResults> CREATOR = new Creator<MarvelResults>() {
         @Override
-        public Result createFromParcel(Parcel in) {
-            return new Result(in);
+        public MarvelResults createFromParcel(Parcel in) {
+            return new MarvelResults(in);
         }
 
         @Override
-        public Result[] newArray(int size) {
-            return new Result[size];
+        public MarvelResults[] newArray(int size) {
+            return new MarvelResults[size];
         }
     };
 
-    public Characters getCharacters() {
-        return characters;
+    public MarvelCharacters getMarvelCharacters() {
+        return marvelCharacters;
     }
 
-    public void setCharacters(Characters characters) {
-        this.characters = characters;
+    public void setMarvelCharacters(MarvelCharacters marvelCharacters) {
+        this.marvelCharacters = marvelCharacters;
     }
 
     public List<Object> getCollectedIssues() {
@@ -150,20 +149,20 @@ public class Result implements Parcelable {
         this.collections = collections;
     }
 
-    public Creators getCreators() {
-        return creators;
+    public MarvelCreators getMarvelCreators() {
+        return marvelCreators;
     }
 
-    public void setCreators(Creators creators) {
-        this.creators = creators;
+    public void setMarvelCreators(MarvelCreators marvelCreators) {
+        this.marvelCreators = marvelCreators;
     }
 
-    public List<Date> getDates() {
-        return dates;
+    public List<MarvelDate> getMarvelDates() {
+        return marvelDates;
     }
 
-    public void setDates(List<Date> dates) {
-        this.dates = dates;
+    public void setMarvelDates(List<MarvelDate> marvelDates) {
+        this.marvelDates = marvelDates;
     }
 
     public String getDescription() {
@@ -198,12 +197,12 @@ public class Result implements Parcelable {
         this.ean = ean;
     }
 
-    public Events getEvents() {
-        return events;
+    public MarvelEvents getMarvelEvents() {
+        return marvelEvents;
     }
 
-    public void setEvents(Events events) {
-        this.events = events;
+    public void setMarvelEvents(MarvelEvents marvelEvents) {
+        this.marvelEvents = marvelEvents;
     }
 
     public String getFormat() {
@@ -222,12 +221,12 @@ public class Result implements Parcelable {
         this.id = id;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public List<MarvelImage> getMarvelImages() {
+        return marvelImages;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setMarvelImages(List<MarvelImage> marvelImages) {
+        this.marvelImages = marvelImages;
     }
 
     public String getIsbn() {
@@ -270,12 +269,12 @@ public class Result implements Parcelable {
         this.pageCount = pageCount;
     }
 
-    public List<Price> getPrices() {
-        return prices;
+    public List<MarvelPrice> getMarvelPrices() {
+        return marvelPrices;
     }
 
-    public void setPrices(List<Price> prices) {
-        this.prices = prices;
+    public void setMarvelPrices(List<MarvelPrice> marvelPrices) {
+        this.marvelPrices = marvelPrices;
     }
 
     public String getResourceURI() {
@@ -286,36 +285,36 @@ public class Result implements Parcelable {
         this.resourceURI = resourceURI;
     }
 
-    public Series getSeries() {
-        return series;
+    public MarvelSeries getMarvelSeries() {
+        return marvelSeries;
     }
 
-    public void setSeries(Series series) {
-        this.series = series;
+    public void setMarvelSeries(MarvelSeries marvelSeries) {
+        this.marvelSeries = marvelSeries;
     }
 
-    public Stories getStories() {
-        return stories;
+    public MarvelStories getMarvelStories() {
+        return marvelStories;
     }
 
-    public void setStories(Stories stories) {
-        this.stories = stories;
+    public void setMarvelStories(MarvelStories marvelStories) {
+        this.marvelStories = marvelStories;
     }
 
-    public List<TextObject> getTextObjects() {
-        return textObjects;
+    public List<MarvelTextObject> getMarvelTextObjects() {
+        return marvelTextObjects;
     }
 
-    public void setTextObjects(List<TextObject> textObjects) {
-        this.textObjects = textObjects;
+    public void setMarvelTextObjects(List<MarvelTextObject> marvelTextObjects) {
+        this.marvelTextObjects = marvelTextObjects;
     }
 
-    public Thumbnail getThumbnail() {
-        return thumbnail;
+    public MarvelThumbnail getMarvelThumbnail() {
+        return marvelThumbnail;
     }
 
-    public void setThumbnail(Thumbnail thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setMarvelThumbnail(MarvelThumbnail marvelThumbnail) {
+        this.marvelThumbnail = marvelThumbnail;
     }
 
     public String getTitle() {
@@ -334,12 +333,12 @@ public class Result implements Parcelable {
         this.upc = upc;
     }
 
-    public List<Url> getUrls() {
-        return urls;
+    public List<MarvelUrl> getMarvelUrls() {
+        return marvelUrls;
     }
 
-    public void setUrls(List<Url> urls) {
-        this.urls = urls;
+    public void setMarvelUrls(List<MarvelUrl> marvelUrls) {
+        this.marvelUrls = marvelUrls;
     }
 
     public String getVariantDescription() {
@@ -365,9 +364,9 @@ public class Result implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(characters, flags);
-        dest.writeParcelable(creators, flags);
-        dest.writeTypedList(dates);
+        dest.writeParcelable(marvelCharacters, flags);
+        dest.writeParcelable(marvelCreators, flags);
+        dest.writeTypedList(marvelDates);
         dest.writeString(description);
         dest.writeString(diamondCode);
         if (digitalId == null) {
@@ -377,7 +376,7 @@ public class Result implements Parcelable {
             dest.writeLong(digitalId);
         }
         dest.writeString(ean);
-        dest.writeParcelable(events, flags);
+        dest.writeParcelable(marvelEvents, flags);
         dest.writeString(format);
         if (id == null) {
             dest.writeByte((byte) 0);
@@ -385,7 +384,7 @@ public class Result implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeLong(id);
         }
-        dest.writeTypedList(images);
+        dest.writeTypedList(marvelImages);
         dest.writeString(isbn);
         dest.writeString(issn);
         if (issueNumber == null) {
@@ -401,15 +400,15 @@ public class Result implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeLong(pageCount);
         }
-        dest.writeTypedList(prices);
+        dest.writeTypedList(marvelPrices);
         dest.writeString(resourceURI);
-        dest.writeParcelable(series, flags);
-        dest.writeParcelable(stories, flags);
-        dest.writeTypedList(textObjects);
-        dest.writeParcelable(thumbnail, flags);
+        dest.writeParcelable(marvelSeries, flags);
+        dest.writeParcelable(marvelStories, flags);
+        dest.writeTypedList(marvelTextObjects);
+        dest.writeParcelable(marvelThumbnail, flags);
         dest.writeString(title);
         dest.writeString(upc);
-        dest.writeTypedList(urls);
+        dest.writeTypedList(marvelUrls);
         dest.writeString(variantDescription);
     }
 }

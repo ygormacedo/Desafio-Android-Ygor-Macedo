@@ -5,27 +5,27 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Date implements Parcelable {
+public class MarvelDate implements Parcelable {
 
     @Expose
     private String date;
     @Expose
     private String type;
 
-    private Date(Parcel in) {
+    private MarvelDate(Parcel in) {
         date = in.readString();
         type = in.readString();
     }
 
-    public static final Creator<Date> CREATOR = new Creator<Date>() {
+    public static final Creator<MarvelDate> CREATOR = new Creator<MarvelDate>() {
         @Override
-        public Date createFromParcel(Parcel in) {
-            return new Date(in);
+        public MarvelDate createFromParcel(Parcel in) {
+            return new MarvelDate(in);
         }
 
         @Override
-        public Date[] newArray(int size) {
-            return new Date[size];
+        public MarvelDate[] newArray(int size) {
+            return new MarvelDate[size];
         }
     };
 

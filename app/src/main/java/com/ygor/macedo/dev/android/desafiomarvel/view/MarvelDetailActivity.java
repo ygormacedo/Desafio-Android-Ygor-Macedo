@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.squareup.picasso.Picasso;
 import com.ygor.macedo.dev.android.desafiomarvel.R;
-import com.ygor.macedo.dev.android.desafiomarvel.data.model.Result;
+import com.ygor.macedo.dev.android.desafiomarvel.data.model.MarvelResults;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,14 +21,14 @@ import java.util.Locale;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class HqDetailActivity extends AppCompatActivity {
+public class MarvelDetailActivity extends AppCompatActivity {
 
     private ImageView imageHero;
     private ImageView imageBackground;
     private ImageView imageBack;
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
-    private Result result;
+    private MarvelResults marvelResults;
     private TextView textTitle;
     private TextView textViewDescription;
     private TextView textViewPublished;
@@ -47,7 +47,7 @@ public class HqDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Pegamos o quadrinho que que foi clicado na lista anterior
-        result = getIntent().getParcelableExtra("comic");
+        marvelResults = getIntent().getParcelableExtra("comic");
 
         // Pegamos o nome da transição para fazer a animação
         String transitionName = getIntent().getStringExtra("transitionName");
@@ -57,18 +57,18 @@ public class HqDetailActivity extends AppCompatActivity {
 
 
         // Configuramos nas view os valores do quadrinho que pegamos
-        textTitle.setText(result.getTitle());
-        textViewDescription.setText(Html.fromHtml(result.getDescription()));
-        textViewPrice.setText("$" + result.getPrices().get(0).getPrice());
-        textViewPages.setText(result.getPageCount().toString());
+        textTitle.setText(marvelResults.getTitle());
+        textViewDescription.setText(Html.fromHtml(marvelResults.getDescription()));
+        textViewPrice.setText("$" + marvelResults.getMarvelPrices().get(0).getPrice());
+        textViewPages.setText(marvelResults.getPageCount().toString());
 
-        Picasso.get().load(result.getThumbnail().getPath() + "/portrait_incredible." + result.getThumbnail().getExtension())
+        Picasso.get().load(marvelResults.getMarvelThumbnail().getPath() + "/portrait_incredible." + marvelResults.getMarvelThumbnail().getExtension())
                 .placeholder(R.drawable.marvel_logo)
                 .error(R.drawable.marvel_logo)
                 .into(imageHero);
 
-        if (!result.getImages().isEmpty()) {
-            Picasso.get().load(result.getImages().get(0).getPath() + "/landscape_incredible." + result.getImages().get(0).getExtension())
+        if (!marvelResults.getMarvelImages().isEmpty()) {
+            Picasso.get().load(marvelResults.getMarvelImages().get(0).getPath() + "/landscape_incredible." + marvelResults.getMarvelImages().get(0).getExtension())
                     .placeholder(R.drawable.marvel_logo)
                     .error(R.drawable.marvel_logo)
                     .into(imageBackground);
@@ -78,7 +78,7 @@ public class HqDetailActivity extends AppCompatActivity {
         try {
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault());
             SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
-            Date date = formatDate.parse(result.getDates().get(0).getDate());
+            Date date = formatDate.parse(marvelResults.getMarvelDates().get(0).getDate());
             String dateString = format.format(date);
             textViewPublished.setText(dateString);
         } catch (ParseException e) {
@@ -90,8 +90,8 @@ public class HqDetailActivity extends AppCompatActivity {
         imageHero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HqDetailActivity.this, ImagePopupActivity.class);
-                intent.putExtra("image", result.getThumbnail().getPath() + "/detail." + result.getThumbnail().getExtension());
+                Intent intent = new Intent(MarvelDetailActivity.this, MarvelImagePopupActivity.class);
+                intent.putExtra("image", marvelResults.getMarvelThumbnail().getPath() + "/detail." + marvelResults.getMarvelThumbnail().getExtension());
                 startActivity(intent);
             }
         });
@@ -113,7 +113,7 @@ public class HqDetailActivity extends AppCompatActivity {
                     imageHero.setVisibility(View.VISIBLE);
                 } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                     imageHero.setVisibility(View.GONE);
-                    toolbar.setTitle(result.getTitle());
+                    toolbar.setTitle(marvelResults.getTitle());
                 } else {
                     imageHero.setVisibility(View.VISIBLE);
                 }

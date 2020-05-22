@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 
 import java.util.List;
 
-public class Data {
+public class MarvelData {
 
     @Expose
     private Long count;
@@ -13,7 +13,7 @@ public class Data {
     @Expose
     private Long offset;
     @Expose
-    private List<Result> results;
+    private List<MarvelResults> marvelResults;
     @Expose
     private Long total;
 
@@ -41,12 +41,12 @@ public class Data {
         this.offset = offset;
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<MarvelResults> getMarvelResults() {
+        return marvelResults;
     }
 
-    public void setResults(List<Result> results) {
-        this.results = results;
+    public void setMarvelResults(List<MarvelResults> marvelResults) {
+        this.marvelResults = marvelResults;
     }
 
     public Long getTotal() {

@@ -7,41 +7,41 @@ import com.google.gson.annotations.Expose;
 
 import java.util.List;
 
-public class Creators implements Parcelable {
+public class MarvelEvents implements Parcelable {
 
     @Expose
     private String collectionURI;
     @Expose
     private Long available;
     @Expose
-    private Long returned;
+    private List<MarvelItem> marvelItems;
     @Expose
-    private List<Item> items;
+    private Long returned;
 
-    protected Creators(Parcel in) {
-        collectionURI = in.readString();
-        items = in.createTypedArrayList(Item.CREATOR);
+    protected MarvelEvents(Parcel in) {
         if (in.readByte() == 0) {
             available = null;
         } else {
             available = in.readLong();
         }
+        collectionURI = in.readString();
         if (in.readByte() == 0) {
             returned = null;
         } else {
             returned = in.readLong();
         }
+        marvelItems = in.createTypedArrayList(MarvelItem.CREATOR);
     }
 
-    private static final Creator<Creators> CREATOR = new Creator<Creators>() {
+    private static final Creator<MarvelEvents> CREATOR = new Creator<MarvelEvents>() {
         @Override
-        public Creators createFromParcel(Parcel in) {
-            return new Creators(in);
+        public MarvelEvents createFromParcel(Parcel in) {
+            return new MarvelEvents(in);
         }
 
         @Override
-        public Creators[] newArray(int size) {
-            return new Creators[size];
+        public MarvelEvents[] newArray(int size) {
+            return new MarvelEvents[size];
         }
     };
 
@@ -61,20 +61,20 @@ public class Creators implements Parcelable {
         this.available = available;
     }
 
+    public List<MarvelItem> getMarvelItems() {
+        return marvelItems;
+    }
+
+    public void setMarvelItems(List<MarvelItem> marvelItems) {
+        this.marvelItems = marvelItems;
+    }
+
     public Long getReturned() {
         return returned;
     }
 
     public void setReturned(Long returned) {
         this.returned = returned;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Creators implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(collectionURI);
-        dest.writeTypedList(items);
+        dest.writeTypedList(marvelItems);
         if (returned == null) {
             dest.writeByte((byte) 0);
         } else {
@@ -93,7 +93,7 @@ public class Creators implements Parcelable {
             dest.writeLong(returned);
         }
         if (available == null) {
-            dest.writeByte((byte) 0);
+            dest.writeLong((byte) 0);
         } else {
             dest.writeByte((byte) 1);
             dest.writeLong(available);

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class TextObject implements Parcelable {
+public class MarvelTextObject implements Parcelable {
 
     @Expose
     private String language;
@@ -14,22 +14,22 @@ public class TextObject implements Parcelable {
     @Expose
     private String type;
 
-    protected TextObject(Parcel in) {
+    protected MarvelTextObject(Parcel in) {
         language = in.readString();
         text = in.readString();
         type = in.readString();
 
     }
 
-    public static final Creator<TextObject> CREATOR = new Creator<TextObject>() {
+    public static final Creator<MarvelTextObject> CREATOR = new Creator<MarvelTextObject>() {
         @Override
-        public TextObject createFromParcel(Parcel in) {
-            return new TextObject(in);
+        public MarvelTextObject createFromParcel(Parcel in) {
+            return new MarvelTextObject(in);
         }
 
         @Override
-        public TextObject[] newArray(int size) {
-            return new TextObject[size];
+        public MarvelTextObject[] newArray(int size) {
+            return new MarvelTextObject[size];
         }
     };
 

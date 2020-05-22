@@ -2,7 +2,6 @@ package com.ygor.macedo.dev.android.desafiomarvel.data.service;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.ygor.macedo.dev.android.desafiomarvel.BuildConfig;
-import com.ygor.macedo.dev.android.desafiomarvel.util.ComicsRepository;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitService {
+public class MarvelRetrofitService {
 
         // Url da api
         private static final String BASE_URL = "https://gateway.marvel.com/v1/public/";
@@ -49,8 +48,8 @@ public class RetrofitService {
         }
 
         // Retornamos a instancia da API criada com o retrofit
-        public static Api getApiService() {
-            return getRetrofit().create(Api.class);
+        public static MarvelApi getApiService() {
+            return getRetrofit().create(MarvelApi.class);
         }
 
     }

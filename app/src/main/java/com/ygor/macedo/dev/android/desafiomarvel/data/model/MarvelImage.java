@@ -5,27 +5,27 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 
-public class Image implements Parcelable {
+public class MarvelImage implements Parcelable {
 
     @Expose
     private String extension;
     @Expose
     private String path;
 
-    protected Image(Parcel in) {
+    protected MarvelImage(Parcel in) {
         extension = in.readString();
         path = in.readString();
     }
 
-    public static final Creator<Image> CREATOR = new Creator<Image>() {
+    public static final Creator<MarvelImage> CREATOR = new Creator<MarvelImage>() {
         @Override
-        public Image createFromParcel(Parcel in) {
-            return new Image(in);
+        public MarvelImage createFromParcel(Parcel in) {
+            return new MarvelImage(in);
         }
 
         @Override
-        public Image[] newArray(int size) {
-            return new Image[size];
+        public MarvelImage[] newArray(int size) {
+            return new MarvelImage[size];
         }
     };
 
