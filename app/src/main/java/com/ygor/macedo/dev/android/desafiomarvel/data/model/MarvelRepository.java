@@ -35,6 +35,7 @@ public class MarvelRepository {
                 .flatMap((Function<MarvelData, Observable<MarvelResults>>) dataResponse ->
                         Observable.fromArray(dataResponse.getMarvelResults().toArray(new MarvelResults[0]))
                                 .subscribe(new boolean[]{marvelResultsList.add(dataResponse)}, new void[]{resultLiveData.postValue(marvelResultsList)})));
+                    //  não consegui solucionar o problema aqui então essa parte quebra o app.
     }
 
 
