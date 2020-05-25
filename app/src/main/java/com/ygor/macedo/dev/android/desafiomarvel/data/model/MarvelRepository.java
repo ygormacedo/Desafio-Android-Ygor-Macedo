@@ -1,15 +1,12 @@
 package com.ygor.macedo.dev.android.desafiomarvel.data.model;
 
-import android.app.AlertDialog;
 import android.app.Application;
 
 import com.ygor.macedo.dev.android.desafiomarvel.data.service.MarvelRetrofitService;
 
-import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
-import java.util.logging.ErrorManager;
 
 import androidx.lifecycle.MutableLiveData;
 import io.reactivex.Observable;
@@ -24,8 +21,8 @@ import static com.ygor.macedo.dev.android.desafiomarvel.util.MarvelMd5HashEncrip
 public class MarvelRepository {
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private MutableLiveData<List<MarvelResults>> resultLiveData = new MutableLiveData<>();
-    private List<MarvelResults> marvelResultsList = new ArrayList<>();
+    private MutableLiveData<List<MarvelData>> resultLiveData = new MutableLiveData<>();
+    private List<MarvelData> marvelResultsList = new ArrayList<MarvelData>();
 
     public MarvelRepository(Application application) {
         String ts = Long.toString(System.currentTimeMillis() / 1000);
@@ -37,12 +34,11 @@ public class MarvelRepository {
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMap((Function<MarvelData, Observable<MarvelResults>>) dataResponse ->
                         Observable.fromArray(dataResponse.getMarvelResults().toArray(new MarvelResults[0]))
-                                .subscribe({marvelResultsList} , {}))); }
+                                .subscribe(new boolean[]{marvelResultsList.add(dataResponse)}, new void[]{resultLiveData.postValue(marvelResultsList)})));
+    }
 
 
-                                //.subscribe(new MutableLiveData[]{resultLiveData},))))
-
-    public MutableLiveData<List<MarvelResults>> getResultLiveData() {
+    public MutableLiveData<List<MarvelData>> getResultLiveData() {
         return resultLiveData;
     }
 

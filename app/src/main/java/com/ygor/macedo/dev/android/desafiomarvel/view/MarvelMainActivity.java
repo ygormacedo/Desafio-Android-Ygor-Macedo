@@ -38,7 +38,7 @@ public class MarvelMainActivity extends AppCompatActivity {
     }
 
     private void getMarvelHq() {
-        marvelActivityViewModel.getMarvelComics().observe(this, marvel -> {
+        marvelActivityViewModel.getMarvelComics ().observe(this, marvel -> {
             marvelList = marvel;
             setMarvelRecyclerView();
             touchRecyclear();
